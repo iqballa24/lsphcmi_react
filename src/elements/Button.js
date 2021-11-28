@@ -3,6 +3,9 @@ import propTypes from "prop-types";
 
 export default function Button(props) {
   const className = ["button"];
+  const id = [""];
+
+  id.push(props.id);
   className.push(props.className);
   if (props.isPrimary) className.push("button-primary");
   if (props.isSecondary) className.push("button-secondary");
@@ -11,7 +14,7 @@ export default function Button(props) {
   if (props.isFloat) className.push("button-float");
 
 
-  return <button className={className.join(" ")}>{props.children}</button>;
+  return <button id={id.join("")} className={className.join(" ")}>{props.children}</button>;
 }
 
 Button.propTypes = {
@@ -21,4 +24,5 @@ Button.propTypes = {
   isPdf: propTypes.bool,
   isFloat: propTypes.bool,
   className: propTypes.string,
+  id: propTypes.string
 };

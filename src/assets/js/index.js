@@ -51,8 +51,7 @@ document.addEventListener('DOMContentLoaded', _ => {
         (this.scrollY > 800 ? 
             btnToTop.classList.add('show') : btnToTop.classList.remove('show')
         );    
-        
-        
+                
         // Hide navbar when scroll to bottom on desktop device
         if($(window).width() >= 1024){
             // Hide navbar when scroll bottom

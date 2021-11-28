@@ -4,7 +4,6 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "elements/Button";
 import Section from "elements/Section";
@@ -15,6 +14,7 @@ import Nav from "components/Nav";
 import Hero from "components/Hero";
 import Preloader from "components/Preloader";
 import Footer from "components/Footer";
+import BtnToTop from "components/BtnToTop";
 
 import Logo from "assets/img/vector/logo-lsp.svg";
 import SkemaImg from "assets/img/vector/card-skema.svg";
@@ -73,25 +73,6 @@ export default function Homepage() {
 
   const closeModalCalendar = () => {
     document.getElementById("myModalCalendar").style.display = "none";
-  };
-
-  window.onscroll = () => {
-    const btn_toggler = document.querySelector("#btn-toggler");
-    const nav = document.querySelector("#navbar");
-    const logo = document.querySelector(".logo-text");
-
-    // change color navbar when scroll
-    if (window.scrollY <= 10) {
-      nav.className = "nav-container";
-      logo.style.color = "#fff";
-      btn_toggler.style.top = "4.9rem";
-      nav.style.paddingTop = "4rem";
-    } else {
-      nav.className = "nav-container scroll";
-      logo.style.color = "#CF2932";
-      btn_toggler.style.top = "3rem";
-      nav.style.paddingTop = "2rem";
-    }
   };
 
   return (
@@ -373,10 +354,9 @@ export default function Homepage() {
             <img src={Calendar} alt="calendar" style={{ width: 100 + "%" }} />
           </div>
         </Modal>
+        
+        <BtnToTop/>
 
-        <Button isFloat id="goto-top">
-          <FontAwesomeIcon icon={faCaretUp} className="my-float" />
-        </Button>
       </main>
       <Footer />
     </div>

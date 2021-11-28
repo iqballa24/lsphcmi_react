@@ -314,7 +314,7 @@ body::-webkit-scrollbar-thumb {
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
   font-size: 3.6rem;
-  visibility: hidden;
+  visibility: visible;
   -webkit-animation: bounce 2s infinite 2s;
           animation: bounce 2s infinite 2s;
 }
