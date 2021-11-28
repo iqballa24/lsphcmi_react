@@ -23,7 +23,12 @@ import IconUnduh from "assets/img/vector/icon-unduh.svg";
 import IconBerkas from "assets/img/vector/icon-berkas.svg";
 import IconDaftar from "assets/img/vector/icon-daftar.svg";
 import IconLaw from "assets/img/vector/codicon_law.svg";
+
 import Calendar from "assets/img/calendar.jpg";
+import pelatihanImg from "assets/img/pelatihan 3 1.jpg";
+import Ujikom1Img from "assets/img/ujikom 16 1.jpg";
+import Pelatihan2Img from "assets/img/pelatihan 4 1.jpg";
+import Ujikom2Img from "assets/img/ujikom 6 1.jpg";
 
 import SKKNI149 from "assets/pdf/SKKNI 2020-149.pdf.pdf";
 import SKKNI79 from "assets/pdf/SKKNI No.072 Th.2019-Hubungan Industrial New.pdf";
@@ -351,6 +356,56 @@ export default class Homepage extends Component {
               </Row>
             </Container>
           </Section>
+          <Section isCenteredContent className="galery-section">
+            <Container>
+              <h1 className="h1-custom mb-5">Dokumentasi Kegiatan</h1>
+              <Row className="mb-5">
+                <Col lg={5} className="mb-5" style={{ overflow: "hidden" }}>
+                  <img
+                    className="fluid img-hover__zoom-colorize"
+                    src={pelatihanImg}
+                    alt="pelatihan"
+                  />
+                </Col>
+                <Col lg={7}>
+                  <Row>
+                    <Col
+                      lg={12}
+                      className="mb-5"
+                      style={{ overflow: "hidden" }}
+                    >
+                      <img
+                        className="fluid img-hover__zoom-colorize"
+                        src={Ujikom1Img}
+                        alt="ujikom1"
+                      />
+                    </Col>
+                    <Col
+                      lg={12}
+                      className="mb-5"
+                      style={{ overflow: "hidden" }}
+                    >
+                      <img
+                        className="fluid img-hover__zoom-colorize"
+                        src={Pelatihan2Img}
+                        alt="pelatihan2"
+                      />
+                    </Col>
+                  </Row>
+                </Col>
+                <Col lg={12} style={{ overflow: "hidden" }}>
+                  <img
+                    className="fluid img-hover__zoom-colorize"
+                    src={Ujikom2Img}
+                    alt="ujikom2"
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <p><a href="/" className="galery-p">See more</a></p>
+              </Row>
+            </Container>
+          </Section>
 
           <Modal isCalendar id="myModalCalendar">
             <span className="close cursor" onClick={closeModalCalendar}>
@@ -360,7 +415,7 @@ export default class Homepage extends Component {
               <img src={Calendar} alt="calendar" style={{ width: 100 + "%" }} />
             </div>
           </Modal>
-          
+
           <BtnToTop />
         </main>
         <Footer />
