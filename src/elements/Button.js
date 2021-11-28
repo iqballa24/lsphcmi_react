@@ -24,5 +24,5 @@ Button.propTypes = {
   isPdf: propTypes.bool,
   isFloat: propTypes.bool,
   className: propTypes.string,
-  id: propTypes.string
+  id: propTypes.string,
 };
