@@ -54,7 +54,7 @@ export default function Nav() {
           className={scrollYIsless10 ? "nav-container" : "nav-container scroll"}
           style={{paddingTop: scrollYIsless10 ? '4rem' : '2rem', top: `${showNav}px`}}
         >
-          <a href="javascript:void(0)" className="nav-logo">
+          <a href="#" className="nav-logo">
             <img className="img-fluid logo" src={Logo} alt="logo" />
             <span
               className="logo-text"
