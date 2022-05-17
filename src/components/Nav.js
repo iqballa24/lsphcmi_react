@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Logo from "assets/img/vector/logo.svg";
 import { Link } from "react-router-dom";
 
@@ -9,88 +9,68 @@ import vector_certificate from "assets/img/vector/vector_certificate.svg";
 import vector_education from "assets/img/vector/vector_education.svg";
 
 export default function Nav() {
-  document.addEventListener("DOMContentLoaded", () => {
-    //  change width nav button when hover
-    const label = document.querySelector(".nav-container label");
-    const span1 = document.querySelector(".nav-span:nth-of-type(1)");
-    const span3 = document.querySelector(".nav-span:nth-of-type(3)");
+  const [isShow, setIsShow] = useState(false);
+  const [registerIsShow, setRegisterIsShow] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrollYIsless10, setScrollYIsLess10] = useState(true);
+  const [showNav, setShowNav] = useState(0)
+  const label = useRef(null);
+  const [widthSpan1, setWidthSpan1] = useState(50);
+  const [widthSpan3, setWidthSpan3] = useState(75);
 
-    label.addEventListener("mouseover", () => {
-      span1.style.width = "100%";
-      span3.style.width = "100%";
-    });
-
-    label.addEventListener("mouseout", () => {
-      span1.style.width = "50%";
-      span3.style.width = "75%";
-    });
-
-    // triger action navbar on medium-small device
-    const btn_toggler = document.querySelector("#btn-toggler");
-    const navbar_menu = document.querySelector(".nav-menus");
-    const btnCancel = document.querySelector(".btn-cancel");
-
-    btn_toggler.onclick = (_) => {
-      navbar_menu.classList.add("show");
-      document.body.classList.add("disabledScroll");
-    };
-    btnCancel.onclick = (_) => {
-      navbar_menu.classList.remove("show");
-      document.body.classList.remove("disabledScroll");
-    };
-
+  useEffect(() => {
     let prevScrollpos = window.pageYOffset;
 
     window.onscroll = () => {
-      const btn_toggler = document.querySelector("#btn-toggler");
-      const nav = document.querySelector("#navbar");
-      const logo = document.querySelector(".logo-text");
-
-      // change color navbar when scroll
       if (window.scrollY <= 10) {
-        nav.className = "nav-container";
-        logo.style.color = "#fff";
-        btn_toggler.style.top = "4.9rem";
-        nav.style.paddingTop = "4rem";
+        setScrollYIsLess10(true);
       } else {
-        nav.className = "nav-container scroll";
-        logo.style.color = "#CF2932";
-        btn_toggler.style.top = "3rem";
-        nav.style.paddingTop = "2rem";
+        setScrollYIsLess10(false);
       }
 
-      // Hide navbar when scroll to bottom on desktop device
+      // // Hide navbar when scroll to bottom on desktop device
       if (screen.width >= 1024) {
         // Hide navbar when scroll bottom
         let currentScrollPos = window.pageYOffset;
         if (prevScrollpos > currentScrollPos) {
-          document.getElementById("navbar").style.top = "0";
+          setShowNav(0)
         } else {
-          document.getElementById("navbar").style.top = "-100px";
+          setShowNav(-100)
         }
         prevScrollpos = currentScrollPos;
       }
     };
-  });
+  }, [lastScrollY]);
 
-  function openModalRegister() {
-    document.getElementById("myModalRegister").style.display = "block";
-  }
-
-  function closeModalRegister() {
-    document.getElementById("myModalRegister").style.display = "none";
-  }
+  const modalRegisterHandler = () => {
+    setRegisterIsShow((prevState) => !prevState);
+  };
 
   return (
     <header>
       <nav className="nav">
-        <div id="navbar" className="nav-container">
+        <div
+          id="navbar"
+          className={scrollYIsless10 ? "nav-container" : "nav-container scroll"}
+          style={{paddingTop: scrollYIsless10 ? '4rem' : '2rem', top: `${showNav}px`}}
+        >
           <a href="javascript:void(0)" className="nav-logo">
             <img className="img-fluid logo" src={Logo} alt="logo" />
-            <span className="logo-text">LSP HCMI</span>
+            <span
+              className="logo-text"
+              style={{ color: scrollYIsless10 ? "#fff" : "#CF2932" }}
+            >
+              LSP HCMI
+            </span>
           </a>
-          <ul className="nav-menus">
-            <div className="btn-cancel">
+          <ul className={`nav-menus ${isShow ? "show" : ""}`}>
+            <div
+              className="btn-cancel"
+              onClick={() => {
+                setIsShow(false);
+                document.body.classList.remove("disabledScroll");
+              }}
+            >
               <p>&#10006;</p>
             </div>
             <li>
@@ -120,22 +100,47 @@ export default function Nav() {
             </li>
             <li>
               <Button isPrimary>
-                <a onClick={openModalRegister}>Daftar</a>
+                <a onClick={modalRegisterHandler}>Daftar</a>
               </Button>
             </li>
           </ul>
-          <label id="btn-toggler" htmlFor="check">
+          <label
+            id="btn-toggler"
+            htmlFor="check"
+            onClick={() => {
+              document.body.classList.add("disabledScroll");
+              setIsShow(true);
+            }}
+            ref={label}
+            onMouseEnter={() => {
+              setWidthSpan1(100);
+              setWidthSpan3(100);
+            }}
+            onMouseOver={() => {
+              setWidthSpan1(50);
+              setWidthSpan3(75);
+            }}
+            style={{top: scrollYIsless10 ? '4.9rem' : '3rem'}}
+          >
             <input type="checkbox" id="check" />
+            <span
+              className="nav-span"
+              style={{ width: `${widthSpan1}%` }}
+            ></span>
             <span className="nav-span"></span>
-            <span className="nav-span"></span>
-            <span className="nav-span"></span>
+            <span
+              className="nav-span"
+              style={{ width: `${widthSpan3}%` }}
+            ></span>
           </label>
         </div>
       </nav>
 
-      <Modal isRegister id="myModalRegister">
+      <Modal isRegister id="myModalRegister" isOpen={registerIsShow}>
         <div className="modal-content">
-          <span className="close cursor" onClick={closeModalRegister}>&times;</span>
+          <span className="close cursor" onClick={modalRegisterHandler}>
+            &times;
+          </span>
           <div className="row text-center">
             <div className="col-md-6">
               <div className="row">
