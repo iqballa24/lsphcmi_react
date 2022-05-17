@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 import Button from "elements/Button";
 import Section from "elements/Section";
@@ -16,74 +14,40 @@ import Preloader from "components/Preloader";
 import Footer from "components/Footer";
 import BtnToTop from "components/BtnToTop";
 
-import Logo from "assets/img/vector/logo-lsp.svg";
-import SkemaImg from "assets/img/vector/card-skema.svg";
-import CompetenceImg from "assets/img/vector/img-competens.svg";
-import IconUnduh from "assets/img/vector/icon-unduh.svg";
-import IconBerkas from "assets/img/vector/icon-berkas.svg";
-import IconDaftar from "assets/img/vector/icon-daftar.svg";
-import IconLaw from "assets/img/vector/codicon_law.svg";
+import peserta from "data/constant/peserta";
+import listOfLaw from "data/constant/listOfLaw";
 
-import Calendar from "assets/img/calendar.jpg";
-import pelatihanImg from "assets/img/pelatihan 3 1.jpg";
-import Ujikom1Img from "assets/img/ujikom 16 1.jpg";
-import Pelatihan2Img from "assets/img/pelatihan 4 1.jpg";
-import Ujikom2Img from "assets/img/ujikom 6 1.jpg";
+import {
+  Calendar,
+  pelatihanImg,
+  Ujikom1Img,
+  Ujikom2Img,
+  Pelatihan2Img,
+  Logo,
+  SkemaImg,
+  CompetenceImg,
+  IconUnduh,
+  IconBerkas,
+  IconDaftar,
+  IconLaw,
+} from "data/image";
 
-import SKKNI149 from "assets/pdf/SKKNI 2020-149.pdf.pdf";
-import SKKNI79 from "assets/pdf/SKKNI No.072 Th.2019-Hubungan Industrial New.pdf";
-import PERENCANAAN from "assets/pdf/SKEMA PERENCANAAN HC.docx";
-import PENGEMBANGAN from "assets/pdf/SKEMA PENGEMBANGAN HC.docx";
-import PENGELOLAAN from "assets/pdf/SKEMA PENGELOLAAN HUBUNGAN INDUSTRIAL.docx";
+import {
+  SKKNI149,
+  SKKNI79,
+  PERENCANAAN,
+  PENGELOLAAN,
+  PENGEMBANGAN,
+} from "data/pdf";
 
 export default class Homepage extends Component {
   constructor(props) {
     super(props);
     this.refAboutSection = React.createRef();
+    this.state = { calendarIsOpen: false };
   }
+
   render() {
-    const peserta = [
-      {
-        icon: faUser,
-        desc: "BOD -1 s/d BOD -3",
-      },
-      {
-        icon: faUser,
-        desc: "Staff HRD",
-      },
-      {
-        icon: faUser,
-        desc: "Manajer",
-      },
-      {
-        icon: faUser,
-        desc: "Kepala Divisi",
-      },
-      {
-        icon: faUser,
-        desc: "Setiap orang yang ingin memiliki sertifikasi kompetensi HC",
-      },
-      {
-        icon: faUser,
-        desc: "BUMN, BUMD dan perusahaan swasta",
-      },
-    ];
-
-    const listOfLaw = [
-      "UU No.3 th.2003 tentang ketenagakerjaan.",
-      "PP RI no.23 th.2004 tentang BNSP.",
-      "PP RI no.31 th.2006 tentang sistem pelatihan kerja nasional.",
-      "Peraturan Presiden Republik Indonesia no.8 th.2012 tentang kerangka kualifikasi Nasional Indonesia.",
-      "Peraturan Menteri Tenaga Kerja dan Transmigrasi Republik Indonesia no.5 th.2012 tentang Sistem Standarisasi Kompetensi Kerja Nasional.",
-    ];
-
-    const openModalCalendar = () => {
-      document.getElementById("myModalCalendar").style.display = "block";
-    };
-
-    const closeModalCalendar = () => {
-      document.getElementById("myModalCalendar").style.display = "none";
-    };
     return (
       <div>
         <Nav />
@@ -163,20 +127,26 @@ export default class Homepage extends Component {
                     Peserta <br /> Uji kompetensi
                   </h1>
                   <div className="overflow-y">
-                    {peserta.map((list, index) => (
-                      <Card className="card-peserta" key={index}>
-                        <Row className="card-body">
-                          <Col lg={2} sm={2} className="icon align-self-center">
-                            <FontAwesomeIcon
-                              icon={list.icon}
-                              style={{ fontSize: 1.6 + "rem" }}
-                            />
-                          </Col>
-                          <Col lg={10} sm={10} className="align-self-center">
-                            <p className="mt-auto mb-auto">{list.desc}</p>
-                          </Col>
-                        </Row>
-                      </Card>
+                    {peserta.map((list) => (
+                      <div key={list.id}>
+                        <Card className="card-peserta">
+                          <Row className="card-body">
+                            <Col
+                              lg={2}
+                              sm={2}
+                              className="icon align-self-center"
+                            >
+                              <FontAwesomeIcon
+                                icon={list.icon}
+                                style={{ fontSize: 1.6 + "rem" }}
+                              />
+                            </Col>
+                            <Col lg={10} sm={10} className="align-self-center">
+                              <p className="mt-auto mb-auto">{list.desc}</p>
+                            </Col>
+                          </Row>
+                        </Card>
+                      </div>
                     ))}
                   </div>
                 </Col>
@@ -246,7 +216,7 @@ export default class Homepage extends Component {
                     className="schedule-calendar"
                     src={Calendar}
                     alt="jadwal uji kompetensi"
-                    onClick={openModalCalendar}
+                    onClick={() => this.setState({ calendarIsOpen: true })}
                     style={{ cursor: "zoom-in" }}
                   />
                 </Col>
@@ -314,9 +284,9 @@ export default class Homepage extends Component {
                 </Col>
                 <Col lg={12} sm={12}>
                   <Row>
-                    {listOfLaw.map((list, index) => (
-                      <Col lg={4} md={6}>
-                        <Card className="card-law" key={index}>
+                    {listOfLaw.map((list) => (
+                      <Col lg={4} md={6} key={list.id}>
+                        <Card className="card-law">
                           <img
                             src={IconLaw}
                             className="fluid card-img-top"
@@ -328,7 +298,7 @@ export default class Homepage extends Component {
                             }}
                           ></img>
                           <div className="card-body">
-                            <p className="card-text">{list}</p>
+                            <p className="card-text">{list.value}</p>
                           </div>
                         </Card>
                       </Col>
@@ -402,13 +372,24 @@ export default class Homepage extends Component {
                 </Col>
               </Row>
               <Row>
-                <p><a href="/" className="galery-p">See more</a></p>
+                <p>
+                  <a href="/" className="galery-p">
+                    See more
+                  </a>
+                </p>
               </Row>
             </Container>
           </Section>
 
-          <Modal isCalendar id="myModalCalendar">
-            <span className="close cursor" onClick={closeModalCalendar}>
+          <Modal
+            isCalendar
+            id="myModalCalendar"
+            isOpen={this.state.calendarIsOpen}
+          >
+            <span
+              className="close cursor"
+              onClick={() => this.setState({ calendarIsOpen: false })}
+            >
               &times;
             </span>
             <div className="modal-content">
