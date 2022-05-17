@@ -413,7 +413,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .modal-daftar {
-  display: none;
+  display: block;
   position: fixed;
   z-index: 1;
   padding: 5rem;

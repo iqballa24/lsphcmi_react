@@ -7,10 +7,16 @@ export default function Modal(props) {
   className.push(props.className);
   id.push(props.id);
 
-  if(props.isCalendar) className.push('modal-box')
-  if(props.isRegister) className.push('modal-daftar')
+  if (props.isCalendar) className.push("modal-box");
+  if (props.isRegister) className.push("modal-daftar");
 
-  return <div id={id.join("")} className={className.join("")}>{props.children}</div>;
+  return props.isOpen ? (
+    <div id={id.join("")} className={className.join("")}>
+      {props.children}
+    </div>
+  ) : (
+    ""
+  );
 }
 
 Modal.prototype = {
