@@ -14,7 +14,6 @@ export default function Nav() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollYIsless10, setScrollYIsLess10] = useState(true);
   const [showNav, setShowNav] = useState(0)
-  const label = useRef(null);
   const [widthSpan1, setWidthSpan1] = useState(50);
   const [widthSpan3, setWidthSpan3] = useState(75);
 
@@ -111,7 +110,6 @@ export default function Nav() {
               document.body.classList.add("disabledScroll");
               setIsShow(true);
             }}
-            ref={label}
             onMouseEnter={() => {
               setWidthSpan1(100);
               setWidthSpan3(100);
