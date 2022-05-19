@@ -49,7 +49,7 @@ export default class Homepage extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <Nav />
         <main>
           <Preloader />
@@ -382,7 +382,7 @@ export default class Homepage extends Component {
           </Section>
 
           <Modal
-            isCalendar
+            isPrimary
             id="myModalCalendar"
             isOpen={this.state.calendarIsOpen}
           >
@@ -400,7 +400,7 @@ export default class Homepage extends Component {
           <BtnToTop />
         </main>
         <Footer />
-      </div>
+      </>
     );
   }
 }
