@@ -7,7 +7,7 @@ export default function Modal(props) {
   className.push(props.className);
   id.push(props.id);
 
-  if (props.isCalendar) className.push("modal-box");
+  if (props.isPrimary) className.push("modal-box");
   if (props.isRegister) className.push("modal-daftar");
 
   return props.isOpen ? (

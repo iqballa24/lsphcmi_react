@@ -1,19 +1,16 @@
-import './assets/css/main.css';
+import "./assets/css/main.css";
 import Homepage from "view/Homepage";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import About from "view/About";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
       <Router>
-      <Switch>
+        <Switch>
           <Route path="/about">
-            <h1>HLOO</h1>
+            <About />
           </Route>
           <Route path="/users">
             <Homepage />
