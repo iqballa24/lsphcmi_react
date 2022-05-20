@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "assets/img/vector/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import Button from "elements/Button";
 import Modal from "elements/Modal";
@@ -11,11 +11,11 @@ import vector_education from "assets/img/vector/vector_education.svg";
 export default function Nav() {
   const [isShow, setIsShow] = useState(false);
   const [registerIsShow, setRegisterIsShow] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollYIsless10, setScrollYIsLess10] = useState(true);
-  const [showNav, setShowNav] = useState(0)
+  const [showNav, setShowNav] = useState(0);
   const [widthSpan1, setWidthSpan1] = useState(50);
   const [widthSpan3, setWidthSpan3] = useState(75);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     let prevScrollpos = window.pageYOffset;
@@ -32,14 +32,14 @@ export default function Nav() {
         // Hide navbar when scroll bottom
         let currentScrollPos = window.pageYOffset;
         if (prevScrollpos > currentScrollPos) {
-          setShowNav(0)
+          setShowNav(0);
         } else {
-          setShowNav(-100)
+          setShowNav(-100);
         }
         prevScrollpos = currentScrollPos;
       }
     };
-  }, [lastScrollY]);
+  }, []);
 
   const modalRegisterHandler = () => {
     setRegisterIsShow((prevState) => !prevState);
@@ -51,7 +51,10 @@ export default function Nav() {
         <div
           id="navbar"
           className={scrollYIsless10 ? "nav-container" : "nav-container scroll"}
-          style={{paddingTop: scrollYIsless10 ? '4rem' : '2rem', top: `${showNav}px`}}
+          style={{
+            paddingTop: scrollYIsless10 ? "4rem" : "2rem",
+            top: `${showNav}px`,
+          }}
         >
           <a href="#" className="nav-logo">
             <img className="img-fluid logo" src={Logo} alt="logo" />
@@ -73,27 +76,40 @@ export default function Nav() {
               <p>&#10006;</p>
             </div>
             <li>
-              <Link className="nav-item" to="/">
+              <Link className={`nav-item ${
+                  pathname === "/" ? "active" : ""
+                }`} to="/">
                 Beranda
               </Link>
             </li>
             <li>
-              <Link className="nav-item" to="/about">
+              <Link
+                className={`nav-item ${
+                  pathname === "/about" ? "active" : ""
+                }`}
+                to="/about"
+              >
                 Tentang
               </Link>
             </li>
             <li>
-              <Link className="nav-item" to="/scheme">
+              <Link className={`nav-item ${
+                  pathname === "/scheme" ? "active" : ""
+                }`} to="/scheme">
                 Skema
               </Link>
             </li>
             <li>
-              <Link className="nav-item" to="/gallery">
+              <Link className={`nav-item ${
+                  pathname === "/gallery" ? "active" : ""
+                }`} to="/gallery">
                 Galeri
               </Link>
             </li>
             <li>
-              <Link className="nav-item" to="/contact">
+              <Link className={`nav-item ${
+                  pathname === "/contact" ? "active" : ""
+                }`} to="/contact">
                 Kontak
               </Link>
             </li>
@@ -118,7 +134,7 @@ export default function Nav() {
               setWidthSpan1(50);
               setWidthSpan3(75);
             }}
-            style={{top: scrollYIsless10 ? '4.9rem' : '3rem'}}
+            style={{ top: scrollYIsless10 ? "4.9rem" : "3rem" }}
           >
             <input type="checkbox" id="check" />
             <span
