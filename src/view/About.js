@@ -124,10 +124,10 @@ export default class About extends Component {
                   />
                 </Col>
                 <Col lg={6}>
-                  <h1 class="h1-custom mb-5">
+                  <h1 className="h1-custom mb-5">
                     Latar Belakang Pendirian LSP HCMI
                   </h1>
-                  <ul class="background-section-list">
+                  <ul className="background-section-list">
                     <li>
                       <p>
                         <FontAwesomeIcon
@@ -190,7 +190,7 @@ export default class About extends Component {
                 <Col lg={6}>
                   <Row>
                     <Col lg={12} className="mb-5">
-                      <h1 class="h1-custom mb-5">Visi</h1>
+                      <h1 className="h1-custom mb-5">Visi</h1>
                       <p>
                         Mewujudkan pengelolaan bidang Human Capital Management
                         yang memenuhi standar kelas dunia dan terpeliharanya
@@ -199,8 +199,8 @@ export default class About extends Component {
                       </p>
                     </Col>
                     <Col>
-                      <h1 class="h1-custom mb-5">Misi</h1>
-                      <ul class="visimisi-section-list">
+                      <h1 className="h1-custom mb-5">Misi</h1>
+                      <ul className="visimisi-section-list">
                         <li>
                           <p>
                             <FontAwesomeIcon
