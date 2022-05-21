@@ -1,6 +1,7 @@
 import "./assets/css/main.css";
 import Homepage from "view/Homepage";
 import About from "view/About";
+import Scheme from "view/Scheme";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -12,8 +13,8 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/users">
-            <Homepage />
+          <Route path="/scheme">
+            <Scheme />
           </Route>
           <Route path="/">
             <Homepage />
