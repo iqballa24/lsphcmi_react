@@ -50,7 +50,7 @@ const data = [
   },
 ];
 
-const title = "Skema Perencaan Human Capital";
+const title = "Skema Perencanaan Human Capital";
 
 const desc =
   "Skema Perencanaan Human Capital dengan menggunakan klaster kompetensi terdapat 5 unit kompetensi, sebagai berikut :";
