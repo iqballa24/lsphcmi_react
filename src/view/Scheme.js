@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
 
 import Section from "elements/Section";
-import ScemeSection from "elements/ScemeSection";
 
 import Nav from "components/Nav";
 import Hero from "components/Hero";

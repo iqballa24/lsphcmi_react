@@ -17,6 +17,7 @@ import IconLaw from "assets/img/vector/codicon_law.svg";
 import ServiceLSP from "assets/img/vector/lsp-section.svg"
 import BackgroundLSP from "assets/img/vector/background-section.svg"
 import VisiMisiLSP from "assets/img/vector/vm-section.svg"
+import ContactLSP from "assets/img/vector/pana.svg"
 
 export {
   Calendar,
@@ -34,5 +35,6 @@ export {
   ServiceLSP,
   BackgroundLSP,
   VisiMisiLSP,
-  StructureLSP
+  StructureLSP,
+  ContactLSP
 };

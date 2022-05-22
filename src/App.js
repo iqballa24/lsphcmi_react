@@ -2,6 +2,7 @@ import "./assets/css/main.css";
 import Homepage from "view/Homepage";
 import About from "view/About";
 import Scheme from "view/Scheme";
+import Contact from "view/Contact";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,6 +16,9 @@ function App() {
           </Route>
           <Route path="/scheme">
             <Scheme />
+          </Route>
+          <Route path="/contact">
+            <Contact />
           </Route>
           <Route path="/">
             <Homepage />
