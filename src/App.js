@@ -3,6 +3,7 @@ import Homepage from "view/Homepage";
 import About from "view/About";
 import Scheme from "view/Scheme";
 import Contact from "view/Contact";
+import Galery from "view/Galery";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="/gallery">
+            <Galery />
           </Route>
           <Route path="/">
             <Homepage />
