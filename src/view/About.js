@@ -32,11 +32,11 @@ export default class About extends Component {
         <Nav />
         <main>
           <Preloader />
-          <Hero refServiceSection={this.refServiceSection} />
+          <Hero refAboutSection={this.refAboutSection} />
 
           {/* Service Section */}
           <Section
-            refServiceSection={this.refServiceSection}
+            refAboutSection={this.refAboutSection}
             className="about-section"
           >
             <Container>
