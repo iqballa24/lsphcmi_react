@@ -32,7 +32,7 @@ export default function BtnToTop() {
   });
 
   return (
-    <Button isFloat id="goto-top">
+    <Button className="" isFloat id="goto-top">
       <FontAwesomeIcon
         icon={faCaretUp}
         className="my-float"

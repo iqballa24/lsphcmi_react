@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 
-
-const Table = ({ column, data }) => {
+const Table = ({ column, data }: any) => {
   let number = 1;
 
   useEffect(() => {
     number = 1;
-  }, [data])
+  }, [data]);
 
   return (
     <>
@@ -15,7 +14,7 @@ const Table = ({ column, data }) => {
           <table className="table">
             <thead>
               <tr className="row100 head">
-                {column?.map((col) => (
+                {column?.map((col: any) => (
                   <th
                     key={col.id}
                     className={`cell100 ${
@@ -34,7 +33,7 @@ const Table = ({ column, data }) => {
         <div className="table100-body js-pscroll">
           <table>
             <tbody>
-              {data?.map((item) => (
+              {data?.map((item:any) => (
                 <tr className="row100 body" key={item.id}>
                   <td
                     className="cell100 column2"

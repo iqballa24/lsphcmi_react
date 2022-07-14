@@ -1,5 +1,5 @@
 import "./assets/css/main.css";
-import Homepage from "view/Homepage";
+import Homepage from "view/Homepage.tsx";
 import About from "view/About";
 import Scheme from "view/Scheme";
 import Contact from "view/Contact";

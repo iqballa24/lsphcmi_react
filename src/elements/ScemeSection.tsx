@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Table from "components/Table";
 
-const ScemeSection = ({columnTable, dataTable, title, desc, filePdf}) => {
+const ScemeSection = ({columnTable, dataTable, title, desc, filePdf}: any) => {
   return (
     <Container>
       <Row className="justify-content-center">
