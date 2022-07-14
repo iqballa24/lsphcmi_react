@@ -114,7 +114,7 @@ export default function Nav() {
               </Link>
             </li>
             <li>
-              <Button isPrimary>
+              <Button id="btnRegsiter" className="btn-register" isPrimary>
                 <a onClick={modalRegisterHandler}>Daftar</a>
               </Button>
             </li>
@@ -150,7 +150,7 @@ export default function Nav() {
         </div>
       </nav>
 
-      <Modal isRegister id="myModalRegister" isOpen={registerIsShow}>
+      <Modal className="" isRegister id="myModalRegister" isOpen={registerIsShow}>
         <div className="modal-content">
           <span className="close cursor" onClick={modalRegisterHandler}>
             &times;

@@ -30,10 +30,19 @@ import {
   imgDokumentasi18,
 } from "data/image";
 
-export default class Galery extends Component {
-  constructor(props) {
+type Props = {
+  refAboutSection: any;
+};
+
+type State = {
+  refAboutSection: React.RefObject<HTMLInputElement>;
+};
+
+
+export default class Galery extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
-    this.refAboutSection = React.createRef();
+    this.state = { refAboutSection: React.createRef() };
   }
 
   render() {
@@ -42,9 +51,9 @@ export default class Galery extends Component {
         <Nav />
         <main>
           <Preloader />
-          <Hero refAboutSection={this.refAboutSection} />
+          <Hero refAboutSection={this.state.refAboutSection} />
           <Section
-            refAboutSection={this.refAboutSection}
+            refAboutSection={this.state.refAboutSection}
             className="about-section"
           >
             <Container fluid className="gallery-container">

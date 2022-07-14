@@ -1,7 +1,12 @@
 import React from "react";
 import propTypes from "prop-types";
 
-export default function Card(props) {
+type Props = {
+  className: string;
+  children: React.ReactNode;
+};
+
+export default function Card(props: Props) {
   const className = ["card"];
   className.push(props.className);
 

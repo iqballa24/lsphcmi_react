@@ -6,24 +6,33 @@ import Preloader from "components/Preloader";
 import Footer from "components/Footer";
 import BtnToTop from "components/BtnToTop";
 import { Toast } from "components/Toast";
-
 import { ContactLSP } from "data/image";
 
-export default class Contact extends Component {
-  constructor(props) {
+type Props = {
+  refAboutSection: any;
+};
+
+type State = {
+  refAboutSection: React.RefObject<HTMLInputElement>;
+  isLoading: boolean;
+  showMessage: boolean;
+};
+
+export default class Contact extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
-    this.refAboutSection = React.createRef();
     this.state = {
       isLoading: false,
       showMessage: false,
+      refAboutSection: React.createRef(),
     };
   }
 
-  onSubmitHandler = (e) => {
+  onSubmitHandler = (e: any) => {
     e.preventDefault();
     const scriptURL =
       "https://script.google.com/macros/s/AKfycbxgeknhjdnQ6Gb8PL1rRjBKrZC5Dp0r8_Jqr2Snb3fw2J0wD224qFCHe7jW52Hvd72C/exec";
-    const form = document.forms["submit-to-google-sheet"];
+    const form = document.forms[1];
 
     this.setState({ isLoading: true });
 
@@ -51,7 +60,7 @@ export default class Contact extends Component {
           <Section className="contact-section">
             <div className="contact-formBx">
               <form
-                name="submit-to-google-sheet"
+                name="1"
                 onSubmit={this.onSubmitHandler}
               >
                 <h1 className="h1-custom">Get in touch</h1>
@@ -67,8 +76,8 @@ export default class Contact extends Component {
                   <textarea
                     name="pesan"
                     id=""
-                    cols="30"
-                    rows="10"
+                    cols={30}
+                    rows={10}
                     required
                   ></textarea>
                   <span>Type Your Message Here...</span>

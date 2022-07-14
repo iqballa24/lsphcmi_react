@@ -1,21 +1,21 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Button from "elements/Button";
-import Section from "elements/Section";
-import Card from "elements/Card";
-import Modal from "elements/Modal";
+import Button from "../elements/Button";
+import Section from "../elements/Section";
+import Card from "../elements/Card";
+import Modal from "../elements/Modal";
 
-import Nav from "components/Nav";
-import Hero from "components/Hero";
-import Preloader from "components/Preloader";
-import Footer from "components/Footer";
-import BtnToTop from "components/BtnToTop";
+import Nav from "../components/Nav";
+import Hero from "../components/Hero";
+import Preloader from "../components/Preloader";
+import Footer from "../components/Footer";
+import BtnToTop from "../components/BtnToTop";
 
-import peserta from "data/constant/peserta";
-import listOfLaw from "data/constant/listOfLaw";
+import peserta from "../data/constant/peserta";
+import listOfLaw from "../data/constant/listOfLaw";
 
 import {
   Calendar,
@@ -38,13 +38,21 @@ import {
   PERENCANAAN,
   PENGELOLAAN,
   PENGEMBANGAN,
-} from "data/pdf";
+} from "../data/pdf";
 
-export default class Homepage extends Component {
-  constructor(props) {
+type Props = {
+  refAboutSection: any;
+};
+
+type State = {
+  calendarIsOpen: boolean;
+  refAboutSection: React.RefObject<HTMLInputElement>;
+};
+
+export default class Homepage extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
-    this.refAboutSection = React.createRef();
-    this.state = { calendarIsOpen: false };
+    this.state = { calendarIsOpen: false, refAboutSection: createRef() };
   }
 
   render() {
@@ -53,9 +61,9 @@ export default class Homepage extends Component {
         <Nav />
         <main>
           <Preloader />
-          <Hero refAboutSection={this.refAboutSection} />
+          <Hero refAboutSection={this.state.refAboutSection} />
           <Section
-            refAboutSection={this.refAboutSection}
+            refAboutSection={this.state.refAboutSection}
             className="about-section"
           >
             <Container>
@@ -68,7 +76,7 @@ export default class Homepage extends Component {
                     yang membutuhkan sertifikasi bidang SDM / Human Capital
                   </p>
                   <Link to="/about">
-                    <Button isSecondary className="mt-5">
+                    <Button id="btnMore" isSecondary className="mt-5">
                       Selengkapnya
                     </Button>
                   </Link>
@@ -111,7 +119,7 @@ export default class Homepage extends Component {
                     human capital, dan skema pengelolaan hubungan industrial.
                   </p>
                   <Link to="/scheme">
-                    <Button isSecondary className="mt-5">
+                    <Button id="btnMore" isSecondary className="mt-5">
                       Selengkapnya
                     </Button>
                   </Link>
@@ -250,7 +258,7 @@ export default class Homepage extends Component {
                   <Row>
                     <Col md={4} className="text-center">
                       <a href={PERENCANAAN} download target={"_blank"}>
-                        <Button isSkema>
+                        <Button className="" id="btnUnduh" isSkema>
                           Unduh Skema Perencanaan Human{" "}
                           <br className="d-none d-xl-block" />
                           Capital
@@ -259,14 +267,14 @@ export default class Homepage extends Component {
                     </Col>
                     <Col md={4} className="text-center">
                       <a href={PENGEMBANGAN} download target={"_blank"}>
-                        <Button isSkema>
+                        <Button className="" id="btnUnduh" isSkema>
                           Unduh Skema Pengembangan Human Capital
                         </Button>
                       </a>
                     </Col>
                     <Col md={4} className="text-center">
                       <a href={PENGELOLAAN} download target={"_blank"}>
-                        <Button isSkema>
+                        <Button className="" id="btnUnduh" isSkema>
                           Unduh Skema Pengelolaan Hubungan Industrial
                         </Button>
                       </a>
@@ -382,6 +390,7 @@ export default class Homepage extends Component {
           </Section>
 
           <Modal
+            className=""
             isPrimary
             id="myModalCalendar"
             isOpen={this.state.calendarIsOpen}

@@ -1,7 +1,17 @@
 import React from "react";
-import propTypes from "prop-types";
 
-export default function Button(props) {
+type Props = {
+  isPrimary?: boolean,
+  isSecondary?: boolean,
+  isSkema?: boolean,
+  isPdf?: boolean,
+  isFloat?: boolean,
+  className: string,
+  id: string,
+  children: React.ReactNode;
+};
+
+export default function Button(props: Props) {
   const className = ["button"];
   const id = [""];
 
@@ -16,13 +26,3 @@ export default function Button(props) {
 
   return <button id={id.join("")} className={className.join(" ")}>{props.children}</button>;
 }
-
-Button.propTypes = {
-  isPrimary: propTypes.bool,
-  isSecondary: propTypes.bool,
-  isSkema: propTypes.bool,
-  isPdf: propTypes.bool,
-  isFloat: propTypes.bool,
-  className: propTypes.string,
-  id: propTypes.string,
-};

@@ -19,11 +19,19 @@ import {
   StructureLSP,
 } from "data/image";
 
-export default class About extends Component {
-  constructor(props) {
+type Props = {
+  refAboutSection: any;
+};
+
+type State = {
+  structurIsOpen: boolean;
+  refAboutSection: React.RefObject<HTMLInputElement>;
+};
+
+export default class About extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
-    this.refAboutSection = React.createRef();
-    this.state = { structurIsOpen: false };
+    this.state = { structurIsOpen: false, refAboutSection: React.createRef() };
   }
 
   render() {
@@ -32,11 +40,11 @@ export default class About extends Component {
         <Nav />
         <main>
           <Preloader />
-          <Hero refAboutSection={this.refAboutSection} />
+          <Hero refAboutSection={this.state.refAboutSection} />
 
           {/* Service Section */}
           <Section
-            refAboutSection={this.refAboutSection}
+            refAboutSection={this.state.refAboutSection}
             className="about-section"
           >
             <Container>
@@ -332,6 +340,7 @@ export default class About extends Component {
           </Section>
 
           <Modal
+            className=""
             isPrimary
             id="myModalStruktur"
             isOpen={this.state.structurIsOpen}
@@ -343,7 +352,11 @@ export default class About extends Component {
               &times;
             </span>
             <div className="modal-content">
-              <img src={StructureLSP} alt="calendar" style={{ width: 100 + "%" }} />
+              <img
+                src={StructureLSP}
+                alt="calendar"
+                style={{ width: 100 + "%" }}
+              />
             </div>
           </Modal>
 

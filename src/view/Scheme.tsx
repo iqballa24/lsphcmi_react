@@ -11,10 +11,18 @@ import SchemePerencanaan from "components/Scheme/SchemePerancangan";
 import SchemePengembangan from "components/Scheme/SchemePengembangan";
 import SchemePengelolaan from "components/Scheme/SchemePengelolaan";
 
-export default class Scheme extends Component {
-  constructor(props) {
+type Props = {
+  refAboutSection: any;
+};
+
+type State = {
+  refAboutSection: React.RefObject<HTMLInputElement>;
+};
+
+export default class Scheme extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
-    this.refAboutSection = React.createRef();
+    this.state = { refAboutSection: React.createRef() };
   }
 
   render() {
@@ -23,11 +31,11 @@ export default class Scheme extends Component {
         <Nav />
         <main>
           <Preloader />
-          <Hero refAboutSection={this.refAboutSection} />
+          <Hero refAboutSection={this.state.refAboutSection} />
 
           {/* skema-perencanaan-section */}
           <Section
-            refAboutSection={this.refAboutSection}
+            refAboutSection={this.state.refAboutSection}
             className="skema-menu-section"
           >
             <SchemePerencanaan />
